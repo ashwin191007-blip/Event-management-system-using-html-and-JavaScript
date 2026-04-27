@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Tech Summit 2026 Registration</h2>
+        <p>Available Seats: <span id="seatCount">50</span></p>
+
+        <form id="regForm">
+            <div class="input-group">
+                <label>Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <small class="error" id="nameError"></small>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address:</label>
+                <input type="email" id="email" placeholder="email@example.com">
+                <small class="error" id="emailError"></small>
+            </div>
+
+            <button type="submit">Register Now</button>
+        </form>
+
+        <div id="confirmation" class="hidden">
+            <div class="success-box">
+                <h3>Success!</h3>
+                <p id="successMsg"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

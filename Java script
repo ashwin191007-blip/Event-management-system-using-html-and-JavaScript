@@ -1,0 +1,50 @@
+// Initialize seats
+let availableSeats = 50;
+const seatDisplay = document.getElementById('seatCount');
+const regForm = document.getElementById('regForm');
+const confirmation = document.getElementById('confirmation');
+
+regForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop page refresh
+
+    // 1. Reset Errors
+    document.getElementById('nameError').textContent = "";
+    document.getElementById('emailError').textContent = "";
+    let isValid = true;
+
+    // 2. Form Validation
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (name === "") {
+        document.getElementById('nameError').textContent = "Name is required.";
+        isValid = false;
+    }
+
+    if (!email.includes("@") || email === "") {
+        document.getElementById('emailError').textContent = "Enter a valid email.";
+        isValid = false;
+    }
+
+    // 3. Logic: Check Seat Availability
+    if (isValid) {
+        if (availableSeats > 0) {
+            // Update Seat Count (Dynamic)
+            availableSeats--;
+            seatDisplay.textContent = availableSeats;
+
+            // 4. Confirmation Message
+            showSuccess(name);
+            regForm.reset(); // Clear form
+        } else {
+            // Error Handling: No seats left
+            alert("Sorry, this event is sold out!");
+        }
+    }
+});
+
+function showSuccess(userName) {
+    confirmation.classList.remove('hidden');
+    document.getElementById('successMsg').textContent = 
+        `Thank you, ${userName}! Your registration is confirmed.`;
+}
